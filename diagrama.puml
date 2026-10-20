@@ -1,0 +1,55 @@
+@startuml
+class Usuario {
+    - id_usuario: int
+    - nombre: str
+    - correo: str
+    - contrasena: str
+    + get_id_usuario()
+    + get_nombre()
+    + get_correo()
+}
+
+class Categoria {
+    - id_categoria: int
+    - nombre_categoria: str
+    - descripcion: str
+    + get_id_categoria()
+    + get_nombre_categoria()
+}
+
+class Receta {
+    - id_receta: int
+    - titulo: str
+    - descripcion: str
+    - tiempo_preparacion: int
+    - dificultad: str
+    - instrucciones: str
+    - id_usuario: int
+    - id_categoria: int
+    + get_id_receta()
+    + get_titulo()
+    + get_instrucciones()
+}
+
+class Ingredientes {
+    - id_ingrediente: int
+    - nombre_ingrediente: str
+    - cantidad_medida: str
+    + get_nombre_ingrediente()
+}
+
+class Valoracion {
+    - id_valoracion: int
+    - puntaje: int
+    - comentario: str
+    - fecha: str
+    - id_receta: int
+    - id_usuario: int
+    + get_puntaje()
+}
+
+Usuario "1" -- "*" Receta : crea
+Categoria "1" -- "*" Receta : clasifica
+Receta "1" -- "*" Valoracion : recibe
+Usuario "1" -- "*" Valoracion : escribe
+@enduml
